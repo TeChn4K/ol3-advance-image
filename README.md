@@ -24,12 +24,11 @@ image.onload = () => {
 	}))
 }
 image.src = "http://mydomain.com/myImage.jpg"
-
+```
 
 ### Others
 
 * It is possible to pass image URL directly.
-
 
 * imageCrop option allow you to crop the image
 
