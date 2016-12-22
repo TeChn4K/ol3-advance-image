@@ -23,14 +23,6 @@ ol.source.AdvanceImage = function sourceAdvanceImage(params) {
     this.image.src = params.url
   }
 
-  // transform coords to pixel
-  function coordsToPixels(xy) {
-    return [
-      Math.round((xy[0] - extent[0]) / (extent[2] - extent[0]) * size[0]),
-      Math.round((xy[1] - extent[3]) / (extent[1] - extent[3]) * size[1]),
-    ]
-  }
-
   // Draw image on canvas
   options.canvasFunction = function(extent, resolution, pixelRatio, size, projection) {
     const canvas = document.createElement("canvas")
@@ -43,6 +35,14 @@ ol.source.AdvanceImage = function sourceAdvanceImage(params) {
       return canvas
     }
 
+    // transform coords to pixel
+    function coordsToPixels(xy) {
+      return [
+        Math.round((xy[0] - extent[0]) / (extent[2] - extent[0]) * size[0]),
+        Math.round((xy[1] - extent[3]) / (extent[1] - extent[3]) * size[1]),
+      ]
+    }
+    
     const pixel = coordsToPixels(this.position[0])
     const pixel2 = coordsToPixels(this.rotatePoint(this.position[0], this.position[1], this.rotate))
 
